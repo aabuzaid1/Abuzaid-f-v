@@ -10,7 +10,7 @@ interface BoxCardProps {
 
 const BoxCard: React.FC<BoxCardProps> = ({ box }) => {
     const { language, t } = useLanguage();
-    const { items, addToCart, updateQuantity } = useCart();
+    const { items, addToCart } = useCart();
     const [imageLoaded, setImageLoaded] = useState(false);
     const [expanded, setExpanded] = useState(false);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Truck, Scale, Award, Leaf, Apple, Carrot, Sparkles, Star, Heart, ShieldCheck, Clock } from 'lucide-react';
+import { ArrowRight, Truck, Scale, Award, Leaf, Apple, Carrot, Sparkles, Star, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';

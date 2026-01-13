@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 
 interface CategoryFilterProps {
     categories: { id: string; label: string }[];
@@ -19,8 +18,8 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
                     key={category.id}
                     onClick={() => onCategoryChange(category.id)}
                     className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${activeCategory === category.id
-                            ? 'bg-primary text-white shadow-md'
-                            : 'bg-white text-gray-700 border border-gray-200 hover:border-primary hover:text-primary'
+                        ? 'bg-primary text-white shadow-md'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:border-primary hover:text-primary'
                         }`}
                 >
                     {category.label}
