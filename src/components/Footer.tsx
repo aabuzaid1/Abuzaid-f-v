@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Clock, Leaf, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, Leaf, Instagram, Facebook, MessageCircle, ArrowUp } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const WHATSAPP_NUMBER = '962790796457';
@@ -164,12 +164,11 @@ const Footer: React.FC = () => {
             {/* Bottom Bar */}
             <div className="border-t border-white/10">
                 <div className="container mx-auto px-4 py-5 text-center">
-                    <p className="text-sm text-gray-500 mb-3">© 2025 {t('brandName')}. {t('rights')}</p>
                     {/* Developer Credit */}
                     <p className="text-sm text-gray-500 mb-2">
                         {t('developerCredit')} <span className="text-primary font-semibold">Abdelrahman Abuzaid</span>
                     </p>
-                    <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
+                    <div className="flex items-center justify-center gap-4 text-sm text-gray-400 mb-3">
                         <a
                             href="tel:0790796457"
                             className="hover:text-white transition-colors flex items-center gap-1"
@@ -187,6 +186,24 @@ const Footer: React.FC = () => {
                             <span>@a.abuzaid06</span>
                         </a>
                     </div>
+                    <p className="text-sm text-gray-500">
+                        © 2025{' '}
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="text-primary hover:text-primary/80 transition-colors cursor-pointer font-semibold"
+                        >
+                            {t('brandName')}
+                        </button>
+                        . {t('rights')}
+                    </p>
+                    {/* Scroll to Top Button */}
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="mt-4 mx-auto flex items-center justify-center gap-2 px-6 py-3 bg-primary/20 hover:bg-primary/30 text-primary rounded-full transition-all duration-300 hover:scale-105 group"
+                    >
+                        <ArrowUp size={18} className="group-hover:-translate-y-1 transition-transform" />
+                        <span className="text-sm font-semibold">العودة للأعلى</span>
+                    </button>
                 </div>
             </div>
         </footer>
