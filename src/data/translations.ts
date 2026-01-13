@@ -294,6 +294,9 @@ export const translations = {
     optional: { ar: 'اختياري', en: 'optional' },
     willContactWhatsapp: { ar: 'سيتم التواصل عبر واتساب', en: 'You will be contacted via WhatsApp' },
     noItemsYet: { ar: 'لم تقم بإضافة أي منتجات بعد', en: 'You have not added any products yet' },
+
+    // Developer Credit
+    developerCredit: { ar: 'تم تصميم وتطوير الموقع بواسطة', en: 'Website Designed and Developed by' },
 };
 
 export type TranslationKey = keyof typeof translations;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Clock, Leaf, Instagram, Facebook, MessageCircle, Heart } from 'lucide-react';
+import { Phone, MapPin, Clock, Leaf, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const WHATSAPP_NUMBER = '962790796457';
@@ -163,11 +163,30 @@ const Footer: React.FC = () => {
 
             {/* Bottom Bar */}
             <div className="border-t border-white/10">
-                <div className="container mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500">
-                    <p>© 2025 {t('brandName')}. {t('rights')}</p>
-                    <p className="flex items-center gap-1">
-                        صُنع بـ <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" /> في الأردن
+                <div className="container mx-auto px-4 py-5 text-center">
+                    <p className="text-sm text-gray-500 mb-3">© 2025 {t('brandName')}. {t('rights')}</p>
+                    {/* Developer Credit */}
+                    <p className="text-sm text-gray-500 mb-2">
+                        {t('developerCredit')} <span className="text-primary font-semibold">Abdelrahman Abuzaid</span>
                     </p>
+                    <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
+                        <a
+                            href="tel:0790796457"
+                            className="hover:text-white transition-colors flex items-center gap-1"
+                        >
+                            <Phone size={14} />
+                            <span dir="ltr">0790796457</span>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/a.abuzaid06?igsh=MWF6MjF0cWcwZGhsYw=="
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-pink-500 transition-colors flex items-center gap-1"
+                        >
+                            <Instagram size={14} />
+                            <span>@a.abuzaid06</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>
