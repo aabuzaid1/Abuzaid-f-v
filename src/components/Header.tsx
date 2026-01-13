@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Globe, Search } from 'lucide-react';
+import { Menu, X, ShoppingCart, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useCart } from '../contexts/CartContext';
 import CartDrawer from './CartDrawer';
@@ -9,7 +9,7 @@ const Header: React.FC = () => {
     const { language, toggleLanguage, t } = useLanguage();
     const { cartCount } = useCart();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [searchOpen, setSearchOpen] = useState(false);
+
     const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
     const location = useLocation();
 
@@ -82,14 +82,6 @@ const Header: React.FC = () => {
 
                         {/* Right Side Actions */}
                         <div className="flex items-center gap-2">
-                            {/* Search Button */}
-                            <button
-                                onClick={() => setSearchOpen(!searchOpen)}
-                                className="p-2.5 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-                                aria-label="Search"
-                            >
-                                <Search size={22} className="text-gray-600" />
-                            </button>
 
                             {/* Language Toggle */}
                             <button
