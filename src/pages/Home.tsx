@@ -272,26 +272,44 @@ const Home: React.FC = () => {
 
             {/* ==== ABOUT/CTA SECTION ==== */}
             <section className="py-24 lg:py-32 bg-gradient-premium text-white relative overflow-hidden">
-                {/* Animated Background shapes */}
+                {/* Animated Background - Premium */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-40 -end-40 w-[30rem] h-[30rem] bg-white/5 rounded-full blur-3xl animate-float" />
-                    <div className="absolute -bottom-40 -start-40 w-[35rem] h-[35rem] bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-white/3 rounded-full blur-3xl animate-breathe" />
+                    {/* Floating Orbs */}
+                    <div className="absolute top-1/4 start-1/4 w-[40rem] h-[40rem] bg-gradient-to-br from-green-400/20 to-emerald-600/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute bottom-1/4 end-1/4 w-[35rem] h-[35rem] bg-gradient-to-br from-yellow-400/15 to-orange-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-white/5 rounded-full blur-3xl animate-breathe" />
+
+                    {/* Moving Particles */}
+                    <div className="absolute top-20 start-10 w-4 h-4 bg-yellow-400/60 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+                    <div className="absolute top-40 end-20 w-3 h-3 bg-green-300/60 rounded-full animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+                    <div className="absolute bottom-40 start-1/3 w-5 h-5 bg-emerald-400/50 rounded-full animate-bounce" style={{ animationDuration: '3s', animationDelay: '1s' }} />
+                    <div className="absolute top-1/3 end-10 w-3 h-3 bg-lime-300/50 rounded-full animate-bounce" style={{ animationDuration: '2.2s', animationDelay: '1.5s' }} />
+                    <div className="absolute bottom-20 end-1/3 w-4 h-4 bg-yellow-300/50 rounded-full animate-bounce" style={{ animationDuration: '2.8s', animationDelay: '0.3s' }} />
+
+                    {/* Animated Lines */}
+                    <div className="absolute top-0 start-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse" />
+                    <div className="absolute top-0 end-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
+                    <div className="absolute top-0 start-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
+
+                    {/* Rotating Ring */}
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] border border-white/5 rounded-full animate-spin" style={{ animationDuration: '60s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] border border-white/5 rounded-full animate-spin" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
                 </div>
 
-                {/* Pattern overlay */}
-                <div className="absolute inset-0 opacity-10" style={{
+                {/* Pattern overlay with animation */}
+                <div className="absolute inset-0 opacity-10 animate-pulse" style={{
                     backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                     backgroundSize: '30px 30px',
+                    animationDuration: '4s',
                 }} />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-5xl mx-auto text-center">
                         <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-8 py-3 rounded-full mb-10 border border-white/20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                             <Leaf size={22} className="text-green-300" />
-                            <span className="text-lg font-bold">منذ 1993</span>
+                            <span className="text-lg font-bold">{t('since')}</span>
                             <div className="w-px h-5 bg-white/30" />
-                            <span className="text-yellow-300 font-bold">33 عاماً من التميز</span>
+                            <span className="text-yellow-300 font-bold">{isRTL ? '33 عاماً من التميز' : '33 Years of Excellence'}</span>
                         </div>
 
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 leading-tight">
@@ -302,20 +320,13 @@ const Home: React.FC = () => {
                             {t('aboutText')}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-5 justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
-                            <Link
-                                to="/about"
-                                className="group inline-flex items-center gap-3 bg-white text-primary px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/95 hover:-translate-y-2 transition-all duration-300 shadow-2xl ripple-effect"
-                            >
-                                {t('about')}
-                                <ArrowRight size={24} className={`transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
-                            </Link>
-
+                        <div className="flex justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-12 py-5 rounded-2xl font-bold text-xl border-2 border-white/30 hover:bg-white/20 hover:border-white/50 hover:-translate-y-2 transition-all duration-300"
+                                className="inline-flex items-center gap-3 bg-white text-primary px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/95 hover:-translate-y-2 transition-all duration-300 shadow-2xl ripple-effect"
                             >
                                 {t('contact')}
+                                <ArrowRight size={24} className={`transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
                             </Link>
                         </div>
                     </div>

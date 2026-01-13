@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Globe } from 'lucide-react';
+import { ShoppingCart, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useCart } from '../contexts/CartContext';
 import CartDrawer from './CartDrawer';
@@ -107,43 +107,55 @@ const Header: React.FC = () => {
                                 )}
                             </button>
 
-                            {/* Mobile Menu Toggle */}
+                            {/* Mobile Menu Toggle - Animated Hamburger */}
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="lg:hidden p-2.5 rounded-xl hover:bg-gray-100 transition-all duration-300"
+                                className="lg:hidden relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/10 to-green-500/10 hover:from-primary/20 hover:to-green-500/20 transition-all duration-300 hover:scale-105 group"
                                 aria-label="Menu"
                             >
-                                {mobileMenuOpen ? (
-                                    <X size={24} className="text-gray-700" />
-                                ) : (
-                                    <Menu size={24} className="text-gray-700" />
-                                )}
+                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
+                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0 scale-0' : ''}`} />
+                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                                </div>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile Menu */}
-                {mobileMenuOpen && (
-                    <div className="lg:hidden bg-white border-t border-gray-100 slide-in-left">
-                        <nav className="container mx-auto px-4 py-4 space-y-2">
+                {/* Mobile Menu - Smooth Overlay */}
+                <div className={`lg:hidden fixed inset-0 top-[calc(3rem+52px)] z-40 transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+                    {/* Backdrop */}
+                    <div
+                        className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                    />
+
+                    {/* Menu Panel */}
+                    <div className={`relative bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-2xl transition-all duration-500 ease-out ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+                        <nav className="container mx-auto px-4 py-6 space-y-2">
                             {navItems.map((item, index) => (
                                 <Link
                                     key={item.path}
                                     to={item.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`block px-5 py-3.5 rounded-2xl font-semibold transition-all duration-300 fade-in ${isActive(item.path)
-                                        ? 'bg-gradient-premium text-white shadow-lg'
-                                        : 'text-gray-700 hover:bg-gray-50'
+                                    className={`flex items-center gap-4 px-5 py-4 rounded-2xl font-semibold transition-all duration-300 ${isActive(item.path)
+                                        ? 'bg-gradient-premium text-white shadow-lg shadow-primary/30'
+                                        : 'text-gray-700 hover:bg-primary/5 hover:text-primary hover:translate-x-2'
                                         }`}
-                                    style={{ animationDelay: `${index * 0.05}s` }}
+                                    style={{
+                                        transitionDelay: mobileMenuOpen ? `${index * 50}ms` : '0ms',
+                                        transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                                        opacity: mobileMenuOpen ? 1 : 0
+                                    }}
                                 >
+                                    <span className={`w-2 h-2 rounded-full ${isActive(item.path) ? 'bg-white' : 'bg-primary'}`} />
                                     {item.label}
                                 </Link>
                             ))}
                         </nav>
                     </div>
-                )}
+                </div>
             </header>
 
             {/* Cart Drawer */}

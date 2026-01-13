@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle, Sparkles, Mail } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle, Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const WHATSAPP_NUMBER = '962790796457';
@@ -61,23 +61,41 @@ const Contact: React.FC = () => {
         <div className="min-h-screen bg-[#FAFAFA]">
             {/* Hero Section */}
             <section className="relative bg-gradient-premium text-white py-20 lg:py-28 overflow-hidden">
+                {/* Animated Background - Premium */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-40 -end-40 w-[30rem] h-[30rem] bg-white/5 rounded-full blur-3xl animate-float" />
-                    <div className="absolute -bottom-40 -start-40 w-[35rem] h-[35rem] bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    {/* Floating Gradient Orbs */}
+                    <div className="absolute -top-40 -end-40 w-[30rem] h-[30rem] bg-gradient-to-br from-blue-400/20 to-cyan-600/15 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-40 -start-40 w-[35rem] h-[35rem] bg-gradient-to-br from-green-400/20 to-emerald-600/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] bg-white/5 rounded-full blur-3xl animate-breathe" />
+
+                    {/* Floating Particles */}
+                    <div className="absolute top-10 start-[15%] w-3 h-3 bg-yellow-400/70 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+                    <div className="absolute top-20 end-[20%] w-4 h-4 bg-cyan-300/60 rounded-full animate-bounce" style={{ animationDuration: '2.3s', animationDelay: '0.4s' }} />
+                    <div className="absolute bottom-20 start-[25%] w-2 h-2 bg-green-300/70 rounded-full animate-bounce" style={{ animationDuration: '1.9s', animationDelay: '0.8s' }} />
+                    <div className="absolute top-1/2 end-[8%] w-3 h-3 bg-blue-400/60 rounded-full animate-bounce" style={{ animationDuration: '2.4s', animationDelay: '1.2s' }} />
+                    <div className="absolute bottom-10 end-[35%] w-2 h-2 bg-lime-300/60 rounded-full animate-bounce" style={{ animationDuration: '2.6s', animationDelay: '0.6s' }} />
+
+                    {/* Animated Rings */}
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] border border-white/10 rounded-full animate-spin" style={{ animationDuration: '55s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] border border-white/5 rounded-full animate-spin" style={{ animationDuration: '40s', animationDirection: 'reverse' }} />
+
+                    {/* Shimmer Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_4s_infinite]" />
                 </div>
 
+                {/* Animated Pattern overlay */}
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                     backgroundSize: '30px 30px',
-                }} />
+                }}>
+                    <div className="absolute inset-0 animate-pulse" style={{ animationDuration: '3s' }} />
+                </div>
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full mb-8 border border-white/20">
-                        <Sparkles size={18} className="text-yellow-400" />
-                        <span className="font-bold">نحن هنا لمساعدتك</span>
-                    </div>
-                    <h1 className="text-4xl lg:text-6xl font-black mb-5">{t('contactTitle')}</h1>
-                    <p className="text-xl text-white/90">{t('contactSubtitle')}</p>
+                    <h1 className="text-4xl lg:text-6xl font-black mb-5 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <span className="inline-block hover:scale-105 transition-transform duration-300">{t('contactTitle')}</span>
+                    </h1>
+                    <p className="text-xl text-white/90 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">{t('contactSubtitle')}</p>
                 </div>
             </section>
 

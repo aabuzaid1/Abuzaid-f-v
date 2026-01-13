@@ -48,27 +48,47 @@ const Category: React.FC = () => {
         <div className="min-h-screen bg-[#FAFAFA]">
             {/* Hero Section */}
             <section className="relative bg-gradient-premium text-white py-16 lg:py-20 overflow-hidden">
-                {/* Background decoration */}
+                {/* Animated Background - Premium */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-20 -end-20 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
-                    <div className="absolute -bottom-20 -start-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+                    {/* Floating Gradient Orbs */}
+                    <div className="absolute -top-20 -end-20 w-[30rem] h-[30rem] bg-gradient-to-br from-green-400/30 to-emerald-600/20 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-20 -start-20 w-[35rem] h-[35rem] bg-gradient-to-br from-lime-400/20 to-green-600/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-3xl animate-breathe" />
+
+                    {/* Floating Particles */}
+                    <div className="absolute top-10 start-[10%] w-3 h-3 bg-yellow-400/70 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+                    <div className="absolute top-20 end-[15%] w-4 h-4 bg-lime-300/60 rounded-full animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '0.3s' }} />
+                    <div className="absolute bottom-10 start-[20%] w-2 h-2 bg-green-300/70 rounded-full animate-bounce" style={{ animationDuration: '1.8s', animationDelay: '0.7s' }} />
+                    <div className="absolute top-1/2 end-[5%] w-3 h-3 bg-emerald-400/60 rounded-full animate-bounce" style={{ animationDuration: '2.2s', animationDelay: '1s' }} />
+                    <div className="absolute bottom-5 end-[30%] w-2 h-2 bg-yellow-300/60 rounded-full animate-bounce" style={{ animationDuration: '2.8s', animationDelay: '0.5s' }} />
+
+                    {/* Animated Rings */}
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] border border-white/10 rounded-full animate-spin" style={{ animationDuration: '50s' }} />
+                    <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] border border-white/5 rounded-full animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
+
+                    {/* Shimmer Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_4s_infinite]" />
                 </div>
 
-                {/* Pattern overlay */}
+                {/* Animated Pattern overlay */}
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                     backgroundSize: '30px 30px',
-                }} />
+                }}>
+                    <div className="absolute inset-0 animate-pulse" style={{ animationDuration: '3s' }} />
+                </div>
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20">
-                            <Filter size={16} />
-                            <span className="text-sm font-medium">تصفح منتجاتنا الطازجة</span>
+                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            <Filter size={16} className="animate-pulse" />
+                            <span className="text-sm font-medium">{t('browseOurProducts')}</span>
                         </div>
-                        <h1 className="text-4xl lg:text-6xl font-black mb-4">{t('products')}</h1>
-                        <p className="text-white/80 text-lg">
-                            اختر من بين تشكيلة واسعة من الفواكه والخضروات الطازجة
+                        <h1 className="text-4xl lg:text-6xl font-black mb-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
+                            <span className="inline-block hover:scale-110 transition-transform duration-300">{t('products')}</span>
+                        </h1>
+                        <p className="text-white/80 text-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+                            {language === 'ar' ? 'اختر من بين تشكيلة واسعة من الفواكه والخضروات الطازجة' : 'Choose from a wide selection of fresh fruits and vegetables'}
                         </p>
                     </div>
                 </div>
