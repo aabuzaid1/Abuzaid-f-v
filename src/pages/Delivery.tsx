@@ -57,13 +57,44 @@ const Delivery: React.FC = () => {
         <div className="min-h-screen bg-[#FAFAFA]">
             {/* Hero Section */}
             <section className="relative bg-gradient-premium text-white py-20 lg:py-28 overflow-hidden">
-                {/* Animated background */}
+                {/* Premium Animated Background */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-40 -end-40 w-[30rem] h-[30rem] bg-white/5 rounded-full blur-3xl animate-float" />
-                    <div className="absolute -bottom-40 -start-40 w-[35rem] h-[35rem] bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    {/* Floating Gradient Orbs */}
+                    <div className="absolute -top-40 -end-40 w-[30rem] h-[30rem] bg-gradient-to-br from-blue-400/20 to-cyan-500/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-40 -start-40 w-[35rem] h-[35rem] bg-gradient-to-tr from-purple-300/15 to-violet-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] bg-gradient-to-r from-white/5 to-emerald-300/5 rounded-full blur-3xl animate-breathe" />
+
+                    {/* Floating Particles */}
+                    <div className="absolute top-[10%] start-[20%] w-3 h-3 bg-cyan-400/60 rounded-full animate-float" style={{ animationDelay: '0s', animationDuration: '5s' }} />
+                    <div className="absolute top-[25%] end-[15%] w-2 h-2 bg-white/50 rounded-full animate-float" style={{ animationDelay: '1.5s', animationDuration: '4s' }} />
+                    <div className="absolute top-[55%] start-[8%] w-4 h-4 bg-green-300/40 rounded-full animate-float" style={{ animationDelay: '2.5s', animationDuration: '6s' }} />
+                    <div className="absolute top-[75%] end-[20%] w-2 h-2 bg-purple-300/50 rounded-full animate-float" style={{ animationDelay: '0.8s', animationDuration: '4.5s' }} />
+                    <div className="absolute top-[35%] start-[3%] w-3 h-3 bg-white/30 rounded-full animate-float" style={{ animationDelay: '2s', animationDuration: '5.5s' }} />
+                    <div className="absolute top-[45%] end-[5%] w-2 h-2 bg-yellow-300/40 rounded-full animate-float" style={{ animationDelay: '3.5s', animationDuration: '4s' }} />
+                    <div className="absolute top-[65%] start-[25%] w-2 h-2 bg-blue-300/35 rounded-full animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+
+                    {/* Moving Shimmer Lines */}
+                    <div className="absolute top-0 left-0 w-full h-full">
+                        <div className="absolute top-[15%] start-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer-line" />
+                        <div className="absolute top-[45%] start-0 w-full h-[1px] bg-gradient-to-l from-transparent via-cyan-400/20 to-transparent animate-shimmer-line" style={{ animationDelay: '1.5s' }} />
+                        <div className="absolute top-[75%] start-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent animate-shimmer-line" style={{ animationDelay: '3s' }} />
+                    </div>
+
+                    {/* Pulsing Concentric Rings */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[15rem] h-[15rem] border border-white/10 rounded-full animate-pulse-ring" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25rem] h-[25rem] border border-cyan-400/5 rounded-full animate-pulse-ring" style={{ animationDelay: '0.8s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] border border-white/5 rounded-full animate-pulse-ring" style={{ animationDelay: '1.6s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-[45rem] border border-purple-400/3 rounded-full animate-pulse-ring" style={{ animationDelay: '2.4s' }} />
+
+                    {/* Truck Animation Path */}
+                    <div className="absolute bottom-[15%] start-0 w-6 h-6 opacity-20 animate-truck-move">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                            <path d="M19.15 8a2 2 0 0 0-1.72-1H15V5a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 1 1.73 3.49 3.49 0 0 0 7 .27h3.1a3.48 3.48 0 0 0 6.9 0 2 2 0 0 0 2-2v-3a1.07 1.07 0 0 0-.14-.52zM15 9h2.43l1.8 3H15z" />
+                        </svg>
+                    </div>
                 </div>
 
-                {/* Pattern */}
+                {/* Grid Pattern */}
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                     backgroundSize: '30px 30px',

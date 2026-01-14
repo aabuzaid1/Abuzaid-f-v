@@ -901,3 +901,129 @@ textarea:focus-visible {
   animation: rotateBorder 10s linear infinite;
   opacity: 0.3;
 }
+
+/* ===== PREMIUM SECTION ANIMATIONS ===== */
+
+/* Shimmer Line Animation */
+@keyframes shimmerLine {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-shimmer-line {
+  animation: shimmerLine 6s ease-in-out infinite;
+}
+
+/* Pulse Ring Animation */
+@keyframes pulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 4s ease-out infinite;
+}
+
+/* Truck Move Animation */
+@keyframes truckMove {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+    opacity: 0;
+  }
+}
+
+.animate-truck-move {
+  animation: truckMove 15s linear infinite;
+}
+
+/* Enhanced Float Animation with Glow */
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+    box-shadow: 0 0 25px currentColor;
+  }
+}
+
+.animate-float-glow {
+  animation: floatGlow 4s ease-in-out infinite;
+}
+
+/* Sparkle Animation */
+@keyframes sparkleEffect {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8) rotate(180deg);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1) rotate(270deg);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkleEffect 3s ease-in-out infinite;
+}
+
+/* Wave Animation for backgrounds */
+@keyframes waveMove {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-25px) translateY(10px);
+  }
+  50% {
+    transform: translateX(0) translateY(25px);
+  }
+  75% {
+    transform: translateX(25px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.animate-wave {
+  animation: waveMove 8s ease-in-out infinite;
+}

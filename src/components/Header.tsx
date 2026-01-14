@@ -55,7 +55,11 @@ const Header: React.FC = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-18 lg:h-20">
                         {/* Brand Name */}
-                        <Link to="/" className="flex items-center group">
+                        <Link
+                            to="/"
+                            className="flex items-center group"
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >
                             <h1 className="font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-green-600 to-primary text-xl lg:text-2xl group-hover:from-green-600 group-hover:to-primary transition-all duration-500">
                                 {t('brandName')}
                             </h1>
