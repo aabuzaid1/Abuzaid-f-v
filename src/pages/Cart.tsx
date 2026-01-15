@@ -233,7 +233,7 @@ const Cart: React.FC = () => {
                                     <div className="w-full bg-amber-200 rounded-full h-2 mt-3">
                                         <div
                                             className="bg-amber-500 h-2 rounded-full transition-all duration-500"
-                                            style={{ width: `${Math.min((subtotal / 10) * 100, 100)}%` }}
+                                            style={{ width: `${Math.min((subtotal / 5) * 100, 100)}%` }}
                                         />
                                     </div>
                                 </div>
@@ -243,8 +243,8 @@ const Cart: React.FC = () => {
                             <Link
                                 to="/checkout"
                                 className={`w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all duration-300 ${isMinimumMet
-                                        ? 'bg-gradient-premium text-white hover:shadow-xl hover:-translate-y-1'
-                                        : 'bg-gray-200 text-gray-500 cursor-not-allowed pointer-events-none'
+                                    ? 'bg-gradient-premium text-white hover:shadow-xl hover:-translate-y-1'
+                                    : 'bg-gray-200 text-gray-500 cursor-not-allowed pointer-events-none'
                                     }`}
                             >
                                 {t('proceedToCheckout')}

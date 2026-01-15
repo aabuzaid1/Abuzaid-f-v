@@ -24,7 +24,7 @@ const Delivery: React.FC = () => {
         {
             icon: Package,
             titleKey: 'minOrderLabel',
-            value: '10',
+            value: '5',
             suffixKey: 'currency',
             descKey: 'toQualifyDelivery',
             color: 'from-blue-400 to-cyan-600',

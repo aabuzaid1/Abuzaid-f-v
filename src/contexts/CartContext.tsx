@@ -16,7 +16,7 @@ interface CartContextType {
 }
 
 const DELIVERY_FEE = 1;
-const MINIMUM_ORDER = 10;
+const MINIMUM_ORDER = 5;
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
