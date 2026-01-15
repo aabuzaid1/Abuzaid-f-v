@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useCart } from '../contexts/CartContext';
@@ -9,6 +9,12 @@ const Header: React.FC = () => {
     const { language, toggleLanguage, t } = useLanguage();
     const { cartCount } = useCart();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleBrandClick = () => {
+        navigate('/');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
     const location = useLocation();
@@ -56,7 +62,7 @@ const Header: React.FC = () => {
                     <div className="flex items-center justify-between h-18 lg:h-20">
                         {/* Brand Name */}
                         <div
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            onClick={handleBrandClick}
                             className="flex items-center group cursor-pointer"
                         >
                             <h1 className="font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-green-600 to-primary text-xl lg:text-2xl group-hover:from-green-600 group-hover:to-primary transition-all duration-500">
