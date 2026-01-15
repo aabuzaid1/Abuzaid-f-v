@@ -242,7 +242,7 @@ const Home: React.FC = () => {
                             {t('whyUs')}
                         </span>
                         <h2 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6">
-                            نتميز بالجودة والثقة
+                            {t('whyUsSubtitle')}
                         </h2>
                         <div className="w-32 h-2 bg-gradient-to-r from-primary via-green-400 to-primary mx-auto rounded-full" />
                     </div>

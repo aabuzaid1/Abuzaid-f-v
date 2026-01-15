@@ -42,6 +42,7 @@ export const translations = {
     bestSellers: { ar: 'الأكثر مبيعاً', en: 'Best Sellers' },
     browseCategories: { ar: 'تصفح الأقسام', en: 'Browse Categories' },
     whyUs: { ar: 'لماذا أبو زيد؟', en: 'Why Abu Zaid?' },
+    whyUsSubtitle: { ar: 'نتميز بالجودة والثقة', en: 'Quality and Trust Excellence' },
     freshDaily: { ar: 'طزاجة يومية', en: 'Fresh Daily' },
     freshDailyDesc: { ar: 'منتجاتنا طازجة من السوق كل يوم', en: 'Products delivered fresh from the market daily' },
     fairWeight: { ar: 'وزن دقيق', en: 'Fair Weight' },
