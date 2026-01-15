@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     return (
         <div className="min-h-screen overflow-hidden">
             {/* ==== HERO SECTION ==== */}
-            <section className="relative min-h-[135vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[125vh] flex items-center justify-center overflow-hidden">
                 {/* Animated Background */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -52,7 +52,7 @@ const Home: React.FC = () => {
                 </div>
 
                 {/* Hero Content */}
-                <div className="container mx-auto px-4 relative z-10 text-center pt-10">
+                <div className="container mx-auto px-4 relative z-10 text-center -mt-40">
                     <div className="max-w-5xl mx-auto">
                         {/* Premium Badge with Glow */}
                         <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-xl px-8 py-4 rounded-full mb-8 border border-white/30 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000 animate-glow">
