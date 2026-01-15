@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -55,11 +55,7 @@ const Header: React.FC = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-18 lg:h-20">
                         {/* Brand Name */}
-                        <Link
-                            to="/"
-                            className="flex items-center group"
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        >
+                        <Link to="/" className="flex items-center group">
                             <h1 className="font-black text-transparent bg-clip-text bg-gradient-to-r from-primary via-green-600 to-primary text-xl lg:text-2xl group-hover:from-green-600 group-hover:to-primary transition-all duration-500">
                                 {t('brandName')}
                             </h1>
@@ -111,55 +107,64 @@ const Header: React.FC = () => {
                                 )}
                             </button>
 
-                            {/* Mobile Menu Toggle - Animated Hamburger */}
+                            {/* Professional Animated Hamburger Menu Toggle */}
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="lg:hidden relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/10 to-green-500/10 hover:from-primary/20 hover:to-green-500/20 transition-all duration-300 hover:scale-105 group"
+                                className="lg:hidden relative w-10 h-10 rounded-xl hover:bg-gray-100 transition-all duration-300 flex items-center justify-center group"
                                 aria-label="Menu"
                             >
-                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5">
-                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0 scale-0' : ''}`} />
-                                    <span className={`w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                                <div className="w-6 h-5 relative flex flex-col justify-between">
+                                    {/* Top Line */}
+                                    <span
+                                        className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ease-out origin-center ${mobileMenuOpen
+                                            ? 'translate-y-[9px] rotate-45 bg-primary'
+                                            : 'group-hover:w-5'
+                                            }`}
+                                        style={{ width: mobileMenuOpen ? '100%' : '100%' }}
+                                    />
+                                    {/* Middle Line */}
+                                    <span
+                                        className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-200 ease-out ${mobileMenuOpen
+                                            ? 'opacity-0 scale-0'
+                                            : 'opacity-100 scale-100 group-hover:translate-x-1'
+                                            }`}
+                                        style={{ width: '75%' }}
+                                    />
+                                    {/* Bottom Line */}
+                                    <span
+                                        className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-300 ease-out origin-center ${mobileMenuOpen
+                                            ? '-translate-y-[9px] -rotate-45 bg-primary'
+                                            : 'group-hover:w-4'
+                                            }`}
+                                        style={{ width: mobileMenuOpen ? '100%' : '50%' }}
+                                    />
                                 </div>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile Menu - Smooth Overlay */}
-                <div className={`lg:hidden fixed inset-0 top-[calc(3rem+52px)] z-40 transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-                    {/* Backdrop */}
-                    <div
-                        className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
-                        onClick={() => setMobileMenuOpen(false)}
-                    />
-
-                    {/* Menu Panel */}
-                    <div className={`relative bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-2xl transition-all duration-500 ease-out ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-                        <nav className="container mx-auto px-4 py-6 space-y-2">
+                {/* Mobile Menu */}
+                {mobileMenuOpen && (
+                    <div className="lg:hidden bg-white border-t border-gray-100 slide-in-left">
+                        <nav className="container mx-auto px-4 py-4 space-y-2">
                             {navItems.map((item, index) => (
                                 <Link
                                     key={item.path}
                                     to={item.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`flex items-center gap-4 px-5 py-4 rounded-2xl font-semibold transition-all duration-300 ${isActive(item.path)
-                                        ? 'bg-gradient-premium text-white shadow-lg shadow-primary/30'
-                                        : 'text-gray-700 hover:bg-primary/5 hover:text-primary hover:translate-x-2'
+                                    className={`block px-5 py-3.5 rounded-2xl font-semibold transition-all duration-300 fade-in ${isActive(item.path)
+                                        ? 'bg-gradient-premium text-white shadow-lg'
+                                        : 'text-gray-700 hover:bg-gray-50'
                                         }`}
-                                    style={{
-                                        transitionDelay: mobileMenuOpen ? `${index * 50}ms` : '0ms',
-                                        transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-                                        opacity: mobileMenuOpen ? 1 : 0
-                                    }}
+                                    style={{ animationDelay: `${index * 0.05}s` }}
                                 >
-                                    <span className={`w-2 h-2 rounded-full ${isActive(item.path) ? 'bg-white' : 'bg-primary'}`} />
                                     {item.label}
                                 </Link>
                             ))}
                         </nav>
                     </div>
-                </div>
+                )}
             </header>
 
             {/* Cart Drawer */}

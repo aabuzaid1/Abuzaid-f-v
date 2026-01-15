@@ -1027,3 +1027,53 @@ textarea:focus-visible {
 .animate-wave {
   animation: waveMove 8s ease-in-out infinite;
 }
+
+/* ===== LANGUAGE SWITCH ANIMATION ===== */
+@keyframes langFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes langFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+/* Language transition wrapper */
+.lang-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lang-switching {
+  animation: langFadeOut 0.15s ease forwards;
+}
+
+.lang-switched {
+  animation: langFadeIn 0.3s ease forwards;
+}
+
+/* Smooth direction change */
+html {
+  transition: direction 0s;
+}
+
+body {
+  transition: font-family 0.2s ease;
+}
+
+/* Text elements smooth transition */
+h1, h2, h3, h4, h5, h6, p, span, a, button, label, li {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}

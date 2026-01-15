@@ -130,7 +130,7 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                         <ShoppingCart size={56} className="text-gray-300" />
                     </div>
                     <h2 className="text-3xl font-black text-gray-800 mb-3">{t('cartEmpty')}</h2>
-                    <p className="text-gray-500 mb-8">لم تقم بإضافة أي منتجات بعد</p>
+                    <p className="text-gray-500 mb-8">{language === 'ar' ? 'لم تقم بإضافة أي منتجات بعد' : 'You have not added any products yet'}</p>
                     <Link
                         to="/category"
                         className="inline-flex items-center gap-3 bg-gradient-premium text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
@@ -145,15 +145,69 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
 
     return (
         <div className="min-h-screen bg-[#FAFAFA]">
-            {/* Hero Header */}
+            {/* Hero Header with Professional Animation */}
             <section className="bg-gradient-premium text-white py-10 lg:py-14 relative overflow-hidden">
+                {/* Animated Background */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {/* Floating Orbs */}
+                    <div className="absolute -top-20 -end-20 w-[25rem] h-[25rem] bg-gradient-to-br from-yellow-400/20 to-orange-500/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute -bottom-20 -start-20 w-[30rem] h-[30rem] bg-gradient-to-tr from-green-300/15 to-emerald-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gradient-to-r from-white/5 to-yellow-300/5 rounded-full blur-3xl animate-breathe" />
+
+                    {/* Floating Words/Text Animation */}
+                    <div className="absolute top-[15%] start-[8%] text-white/10 text-2xl font-black animate-float select-none" style={{ animationDelay: '0s', animationDuration: '6s' }}>
+                        {language === 'ar' ? '🛒' : '🛒'}
+                    </div>
+                    <div className="absolute top-[25%] end-[12%] text-white/8 text-xl font-bold animate-float select-none" style={{ animationDelay: '1s', animationDuration: '5s' }}>
+                        {language === 'ar' ? 'جودة' : 'Quality'}
+                    </div>
+                    <div className="absolute top-[60%] start-[5%] text-white/10 text-lg font-bold animate-float select-none" style={{ animationDelay: '2s', animationDuration: '7s' }}>
+                        {language === 'ar' ? 'طازج' : 'Fresh'}
+                    </div>
+                    <div className="absolute top-[70%] end-[8%] text-white/8 text-2xl font-black animate-float select-none" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }}>
+                        🥬
+                    </div>
+                    <div className="absolute top-[40%] start-[3%] text-white/6 text-lg font-bold animate-float select-none" style={{ animationDelay: '1.5s', animationDuration: '5.5s' }}>
+                        {language === 'ar' ? 'توصيل' : 'Delivery'}
+                    </div>
+                    <div className="absolute top-[20%] end-[25%] text-white/8 text-xl font-bold animate-float select-none" style={{ animationDelay: '3s', animationDuration: '6s' }}>
+                        🍎
+                    </div>
+                    <div className="absolute bottom-[20%] start-[20%] text-white/6 text-2xl animate-float select-none" style={{ animationDelay: '2.5s', animationDuration: '5s' }}>
+                        🥕
+                    </div>
+                    <div className="absolute top-[45%] end-[5%] text-white/10 text-lg font-bold animate-float select-none" style={{ animationDelay: '1s', animationDuration: '4s' }}>
+                        {language === 'ar' ? 'سريع' : 'Fast'}
+                    </div>
+
+                    {/* Animated Particles */}
+                    <div className="absolute top-[10%] start-[20%] w-2 h-2 bg-yellow-400/50 rounded-full animate-float" style={{ animationDelay: '0s', animationDuration: '4s' }} />
+                    <div className="absolute top-[30%] end-[15%] w-3 h-3 bg-white/40 rounded-full animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+                    <div className="absolute top-[50%] start-[15%] w-2 h-2 bg-emerald-300/40 rounded-full animate-float" style={{ animationDelay: '2s', animationDuration: '6s' }} />
+                    <div className="absolute top-[75%] end-[20%] w-3 h-3 bg-yellow-300/40 rounded-full animate-float" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }} />
+
+                    {/* Shimmer Lines */}
+                    <div className="absolute top-0 left-0 w-full h-full">
+                        <div className="absolute top-[30%] start-0 w-full h-[1px] bg-gradient-to-l from-transparent via-white/20 to-transparent animate-shimmer-line" />
+                        <div className="absolute top-[60%] start-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/15 to-transparent animate-shimmer-line" style={{ animationDelay: '2s' }} />
+                    </div>
+
+                    {/* Glowing Rings */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[15rem] h-[15rem] border border-white/10 rounded-full animate-pulse-ring" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25rem] h-[25rem] border border-yellow-400/5 rounded-full animate-pulse-ring" style={{ animationDelay: '1s' }} />
+                </div>
+
+                {/* Grid Pattern */}
                 <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                     backgroundSize: '30px 30px',
                 }} />
+
                 <div className="container mx-auto px-4 relative z-10">
-                    <h1 className="text-3xl lg:text-4xl font-black text-center">{t('checkoutTitle')}</h1>
-                    <p className="text-white/80 text-center mt-2">أكمل بياناتك لإتمام الطلب</p>
+                    <h1 className="text-3xl lg:text-4xl font-black text-center animate-text-reveal">{t('checkoutTitle')}</h1>
+                    <p className="text-white/80 text-center mt-2 fade-in" style={{ animationDelay: '0.3s' }}>
+                        {language === 'ar' ? 'أكمل بياناتك لإتمام الطلب' : 'Complete your details to place the order'}
+                    </p>
                 </div>
             </section>
 
@@ -161,14 +215,14 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                 {/* Trust Badges */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                     {[
-                        { icon: ShieldCheck, text: 'ضمان الجودة', color: 'text-green-600 bg-green-50' },
-                        { icon: Truck, text: 'توصيل سريع', color: 'text-blue-600 bg-blue-50' },
-                        { icon: Clock, text: 'دعم على مدار الساعة', color: 'text-purple-600 bg-purple-50' },
-                        { icon: CreditCard, text: 'دفع عند الاستلام', color: 'text-orange-600 bg-orange-50' },
+                        { icon: ShieldCheck, textAr: 'ضمان الجودة', textEn: 'Quality Guarantee', color: 'text-green-600 bg-green-50' },
+                        { icon: Truck, textAr: 'توصيل سريع', textEn: 'Fast Delivery', color: 'text-blue-600 bg-blue-50' },
+                        { icon: Clock, textAr: 'دعم على مدار الساعة', textEn: '24/7 Support', color: 'text-purple-600 bg-purple-50' },
+                        { icon: CreditCard, textAr: 'دفع عند الاستلام', textEn: 'Cash on Delivery', color: 'text-orange-600 bg-orange-50' },
                     ].map((badge, i) => (
-                        <div key={i} className={`flex items-center gap-3 p-4 rounded-2xl ${badge.color.split(' ')[1]} border border-gray-100`}>
+                        <div key={i} className={`flex items-center gap-3 p-4 rounded-2xl ${badge.color.split(' ')[1]} border border-gray-100 fade-in`} style={{ animationDelay: `${i * 0.1}s` }}>
                             <badge.icon size={24} className={badge.color.split(' ')[0]} />
-                            <span className="font-semibold text-gray-800 text-sm">{badge.text}</span>
+                            <span className="font-semibold text-gray-800 text-sm">{language === 'ar' ? badge.textAr : badge.textEn}</span>
                         </div>
                     ))}
                 </div>
@@ -196,7 +250,7 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                                             value={formData.name}
                                             onChange={handleChange}
                                             className={`w-full px-5 py-4 rounded-2xl border-2 ${errors.name ? 'border-red-400 bg-red-50' : 'border-gray-200'} focus:ring-2 focus:ring-primary focus:border-primary transition-all text-lg`}
-                                            placeholder="الاسم الكامل"
+                                            placeholder={language === 'ar' ? 'الاسم الكامل' : 'Full Name'}
                                         />
                                         {errors.name && <p className="text-red-500 text-sm mt-2 font-medium">{errors.name}</p>}
                                     </div>
@@ -243,8 +297,8 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                                                     type="button"
                                                     onClick={() => setFormData(prev => ({ ...prev, slot: slot.id }))}
                                                     className={`p-3 rounded-xl border-2 text-center transition-all ${formData.slot === slot.id
-                                                            ? 'border-primary bg-primary/5 ring-2 ring-primary/20'
-                                                            : 'border-gray-200 hover:border-gray-300'
+                                                        ? 'border-primary bg-primary/5 ring-2 ring-primary/20'
+                                                        : 'border-gray-200 hover:border-gray-300'
                                                         }`}
                                                 >
                                                     <span className="text-xl block mb-1">{slot.icon}</span>
@@ -264,7 +318,7 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                                         value={formData.address}
                                         onChange={handleChange}
                                         rows={2}
-                                        placeholder="العنوان بالتفصيل (اسم الشارع، رقم البناية، الطابق)"
+                                        placeholder={language === 'ar' ? 'العنوان بالتفصيل (اسم الشارع، رقم البناية، الطابق)' : 'Detailed address (street name, building number, floor)'}
                                         className={`w-full px-5 py-4 rounded-2xl border-2 ${errors.address ? 'border-red-400 bg-red-50' : 'border-gray-200'} focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none text-lg`}
                                     />
                                     {errors.address && <p className="text-red-500 text-sm mt-2 font-medium">{errors.address}</p>}
@@ -272,7 +326,7 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
 
                                 {/* Notes */}
                                 <div className="mt-5">
-                                    <label className="block text-sm font-bold mb-2 text-gray-700">{t('notes')} <span className="text-gray-400 font-normal">(اختياري)</span></label>
+                                    <label className="block text-sm font-bold mb-2 text-gray-700">{t('notes')} <span className="text-gray-400 font-normal">{language === 'ar' ? '(اختياري)' : '(Optional)'}</span></label>
                                     <textarea
                                         name="notes"
                                         value={formData.notes}
@@ -392,7 +446,7 @@ ${formData.notes ? `Notes: ${formData.notes}` : ''}
                                 {isMinimumMet && (
                                     <p className="text-center text-gray-500 text-sm mt-3 flex items-center justify-center gap-2">
                                         <CheckCircle size={16} className="text-green-500" />
-                                        سيتم التواصل عبر واتساب
+                                        {language === 'ar' ? 'سيتم التواصل عبر واتساب' : 'We will contact you via WhatsApp'}
                                     </p>
                                 )}
                             </div>

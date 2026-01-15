@@ -27,7 +27,20 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     }, [language, isRTL]);
 
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'ar' ? 'en' : 'ar');
+        // Add switching animation class
+        document.body.classList.add('lang-switching');
+
+        // Wait for fade out, then switch language
+        setTimeout(() => {
+            setLanguage(prev => prev === 'ar' ? 'en' : 'ar');
+            document.body.classList.remove('lang-switching');
+            document.body.classList.add('lang-switched');
+
+            // Remove animation class after fade in
+            setTimeout(() => {
+                document.body.classList.remove('lang-switched');
+            }, 300);
+        }, 150);
     };
 
     const t = (key: TranslationKey): string => {
