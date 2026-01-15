@@ -37,7 +37,6 @@ export const translations = {
 
     // Home Page
     heroTitle: { ar: 'طازج يومياً إلى باب بيتك', en: 'Fresh Daily to Your Door' },
-    heroSubtitle: { ar: 'نوصّلك لباب بيتك في عمّان', en: 'Delivered to your door in Amman' },
     shopNow: { ar: 'تسوق الآن', en: 'Shop Now' },
     featuredDeals: { ar: 'عروض اليوم', en: "Today's Deals" },
     bestSellers: { ar: 'الأكثر مبيعاً', en: 'Best Sellers' },

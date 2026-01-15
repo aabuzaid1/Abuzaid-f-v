@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     return (
         <div className="min-h-screen overflow-hidden">
             {/* ==== HERO SECTION ==== */}
-            <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[120vh] flex items-center justify-center overflow-hidden">
                 {/* Animated Background */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -72,13 +72,11 @@ const Home: React.FC = () => {
 
                         {/* Animated Subtitle */}
                         <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                            <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 font-light max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-                                {t('heroSubtitle')}
-                            </p>
                             <p className="text-lg md:text-xl text-yellow-400/90 font-bold tracking-wide">
                                 ✨ {t('qualityUnmatched')} ✨
                             </p>
                         </div>
+
 
                         {/* Stats Bar */}
                         <div className="grid grid-cols-3 gap-4 mt-12 mb-12 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400">
