@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     return (
         <div className="min-h-screen overflow-hidden">
             {/* ==== HERO SECTION ==== */}
-            <section className="relative min-h-[120vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[135vh] flex items-center justify-center overflow-hidden">
                 {/* Animated Background */}
                 <div className="absolute inset-0 z-0">
                     <img
