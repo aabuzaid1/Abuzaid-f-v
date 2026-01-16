@@ -514,7 +514,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: 'https://images.unsplash.com/photo-1590005354167-6da97870c757?w=400&h=400&fit=crop',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSVb-Z8CJVQ6dZfMfSCV07hlhzUHC6dc_DXlmFUMDFl6bIAXZTGTOzpxHmyBlmhO66JfvNCozrh8sb6Ed1LEhxRBXoohxCPfpBVNFuMvuD&s=10',
         inStock: true,
     },
     {
@@ -631,7 +631,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.30,
         unit: 'kg',
-        image: 'https://images.unsplash.com/photo-1715941873135-217c6f7c7f42?w=500&auto=format&fit=crop&q=60',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM9qLRzVVfedV5CNTijJxzrcM1UuZcYHdD1HnWTTiyDMJxc4T0lbNi7KgJdWyPRU7lhvq-yoV3xPoKPJ4XAFej3LhZ8wYzC4jdWDYoyVnWVw&s=10',
         inStock: true,
     },
     {
