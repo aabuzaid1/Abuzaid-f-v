@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Search, Apple, Carrot, Sparkles, Filter } from 'lucide-react';
+import { Search, Apple, Carrot, Sparkles, Filter, Leaf } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -16,6 +16,7 @@ const Category: React.FC = () => {
         { id: 'all', label: t('allProducts'), icon: Sparkles },
         { id: 'fruits', label: t('fruits'), icon: Apple },
         { id: 'vegetables', label: t('vegetables'), icon: Carrot },
+        { id: 'herbs', label: t('herbs'), icon: Leaf },
     ];
 
     const filteredProducts = useMemo(() => {

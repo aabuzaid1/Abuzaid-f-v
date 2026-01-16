@@ -11,6 +11,7 @@ const Home: React.FC = () => {
     const categories = [
         { id: 'fruits', icon: Apple, color: 'from-red-500 via-rose-500 to-pink-600', bgImage: '🍎🍊🍋🍇🍓', path: '/category?cat=fruits' },
         { id: 'vegetables', icon: Carrot, color: 'from-green-500 via-emerald-500 to-teal-600', bgImage: '🥕🥦🌽🍅🥬', path: '/category?cat=vegetables' },
+        { id: 'herbs', icon: Leaf, color: 'from-lime-500 via-green-500 to-emerald-600', bgImage: '🌿🥬🧅🥒🌱', path: '/category?cat=herbs' },
     ];
 
     const features = [

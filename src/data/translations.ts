@@ -23,7 +23,7 @@ export const translations = {
     home: { ar: 'الرئيسية', en: 'Home' },
     vegetables: { ar: 'خضار', en: 'Vegetables' },
     fruits: { ar: 'فواكه', en: 'Fruits' },
-    herbs: { ar: 'أعشاب وورقيات', en: 'Herbs & Greens' },
+    herbs: { ar: 'الحشائش', en: 'Herbs' },
     organic: { ar: 'عضوي', en: 'Organic' },
     imported: { ar: 'مستورد', en: 'Imported' },
     deals: { ar: 'عروض اليوم', en: "Today's Deals" },
