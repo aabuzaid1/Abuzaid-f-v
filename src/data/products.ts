@@ -359,7 +359,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.15,
         unit: 'bunch',
-        image: '/images/herbs/mint.jpg',
+        image: 'https://images.unsplash.com/photo-bHWRSq8fUUE?w=400&h=400&fit=crop',
         inStock: true,
         isBestSeller: true,
     },
@@ -369,7 +369,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.15,
         unit: 'bunch',
-        image: '/images/herbs/Parsley.jpg',
+        image: 'https://images.unsplash.com/photo-r6BUzN_jTHg?w=400&h=400&fit=crop',
         inStock: true,
         isBestSeller: true,
     },
@@ -379,7 +379,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.15,
         unit: 'bunch',
-        image: '/images/herbs/Arugula.jpg',
+        image: 'https://images.unsplash.com/photo-wxHq7eBBWZI?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -388,7 +388,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.50,
         unit: 'bunch',
-        image: '/images/herbs/Radish.jpg',
+        image: 'https://images.unsplash.com/photo-3vCaADeY8aM?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -397,7 +397,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Thyme.jpg',
+        image: 'https://images.unsplash.com/photo-9rt6gV_IjhA?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -406,7 +406,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.15,
         unit: 'bunch',
-        image: '/images/herbs/Cilantro.jpg',
+        image: 'https://images.unsplash.com/photo-kgb34f0HRSc?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -415,7 +415,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.25,
         unit: 'bunch',
-        image: '/images/herbs/Dill.jpg',
+        image: 'https://images.unsplash.com/photo-7CcXR5wIhEY?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -424,7 +424,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.25,
         unit: 'bunch',
-        image: '/images/herbs/Leek.jpg',
+        image: 'https://images.unsplash.com/photo-rmTX6UOtoxc?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -433,7 +433,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.25,
         unit: 'bunch',
-        image: '/images/herbs/Garden Cress.jpg',
+        image: 'https://images.unsplash.com/photo-2x_sKJcNfKM?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -451,7 +451,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.33,
         unit: 'bunch',
-        image: '/images/herbs/Chicory.jpg',
+        image: 'https://images.unsplash.com/photo-hCJZwPFlk4E?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -469,7 +469,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.50,
         unit: 'bunch',
-        image: '/images/herbs/Khobeizeh.jpg',
+        image: 'https://images.unsplash.com/photo-CgIZm6ho4mU?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -487,7 +487,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.25,
         unit: 'kg',
-        image: '/images/herbs/Red Carrots.jpg',
+        image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -496,7 +496,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Tongue Leaves.jpg',
+        image: 'https://images.unsplash.com/photo-fPyE0Xl-C2g?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -505,7 +505,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.50,
         unit: 'bunch',
-        image: '/images/herbs/Turnip.jpg',
+        image: 'https://images.unsplash.com/photo-DIYv7TerQI4?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -514,7 +514,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Taro.jpg',
+        image: 'https://images.unsplash.com/photo-CgIZm6ho4mU?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -523,7 +523,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.50,
         unit: 'piece',
-        image: '/images/herbs/Red Cabbage.jpg',
+        image: 'https://images.unsplash.com/photo-B_unwqgxieY?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -532,7 +532,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Broccoli.jpg',
+        image: 'https://images.unsplash.com/photo-TL6bTnQWMbk?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -541,7 +541,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.50,
         unit: 'piece',
-        image: '/images/herbs/Iceberg Lettuce.jpg',
+        image: 'https://images.unsplash.com/photo-5MU_4hPl67Y?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -550,7 +550,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.33,
         unit: 'piece',
-        image: '/images/herbs/Local Lettuce.jpg',
+        image: 'https://images.unsplash.com/photo-fPyE0Xl-C2g?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -559,7 +559,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Sage.jpg',
+        image: 'https://images.unsplash.com/photo-7CcXR5wIhEY?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -568,7 +568,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Green Onions.jpg',
+        image: 'https://images.unsplash.com/photo-1580201092675-a0a6a6cafbb1?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -577,7 +577,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.75,
         unit: 'kg',
-        image: '/images/herbs/Slim Eggplant.jpg',
+        image: 'https://images.unsplash.com/photo-FLqbvDlS1iE?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -595,7 +595,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.25,
         unit: 'kg',
-        image: '/images/herbs/Baby Cucumbers.jpg',
+        image: 'https://images.unsplash.com/photo-hCJZwPFlk4E?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -622,7 +622,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Broad Beans.jpg',
+        image: 'https://images.unsplash.com/photo-luXY1NiiI3E?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -631,7 +631,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.30,
         unit: 'kg',
-        image: '/images/herbs/Black-eyed Peas.jpg',
+        image: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -649,7 +649,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.50,
         unit: 'kg',
-        image: '/images/herbs/Chamomile.jpg',
+        image: 'https://images.unsplash.com/photo-C1dunESLYBQ?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -658,7 +658,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 1.00,
         unit: 'box',
-        image: '/images/herbs/Basil.jpg',
+        image: 'https://images.unsplash.com/photo-0wWYos3ZGqU?w=400&h=400&fit=crop',
         inStock: true,
     },
     {
@@ -667,7 +667,7 @@ export const products: Product[] = [
         category: 'herbs',
         price: 0.20,
         unit: 'bunch',
-        image: '/images/herbs/Fennel.jpg',
+        image: 'https://images.unsplash.com/photo-Kp-btj_jvqs?w=400&h=400&fit=crop',
         inStock: true,
     },
 
