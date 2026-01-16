@@ -6,10 +6,28 @@ const Delivery: React.FC = () => {
     const { t } = useLanguage();
 
     const areas = [
+        // غرب عمان
         'areaAbdali', 'areaJabalAmman', 'areaJabalHussein', 'areaShmeisani',
         'areaSweifieh', 'areaKhalda', 'areaDahiya', 'areaJubeiha',
-        'areaTlaAli', 'areaUmUthaina', 'areaMarka', 'areaWehdat',
-        'areaHashmi', 'areaTabarbour', 'areaSahab',
+        'areaTlaAli', 'areaUmUthaina', 'areaRabieh', 'areaDeir',
+        'areaAbdoun', 'areaUmSummaq', 'areaDabuq', 'areaWadiSeer',
+        'areaBayadir', 'areaMarj', 'areaSafut', 'areaGardens',
+        'areaJandaweel', 'areaKursi', 'areaSeventh', 'areaEighth',
+        'areaJabalLweibdeh', 'areaDowntown',
+        // شمال عمان
+        'areaAbuNsair', 'areaShafa', 'areaSweileh', 'areaYasmin', 'areaRawnaq',
+        // شرق عمان
+        'areaMarka', 'areaWehdat', 'areaHashmi', 'areaTabarbour',
+        'areaJabalNasr', 'areaJabalNazif', 'areaJabalJofa', 'areaJabalTaj',
+        'areaJabalAkhdar', 'areaNuzha', 'areaAshrafieh', 'areaNasr',
+        'areaRasAlAin', 'areaMedina', 'areaAirport', 'areaQasr',
+        'areaRashid', 'areaJabalMesk', 'areaMasdar', 'areaTareq',
+        // جنوب عمان
+        'areaSahab', 'areaMuqabalin', 'areaQweismeh', 'areaAbuAlanda',
+        'areaAirportRoad', 'areaQueenAlia', 'areaKhreibt', 'areaNaour',
+        'areaJizeh', 'areaTilaa',
+        // مناطق محيطة
+        'areaSalt', 'areaFuheis', 'areaZarqa',
     ];
 
     const infoCards = [
