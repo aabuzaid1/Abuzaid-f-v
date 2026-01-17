@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider } from './contexts/CartContext';
 import Header from './components/Header';
@@ -35,6 +36,7 @@ function App() {
                         </main>
                         <Footer />
                     </div>
+                    <Analytics />
                 </BrowserRouter>
             </CartProvider>
         </LanguageProvider>
