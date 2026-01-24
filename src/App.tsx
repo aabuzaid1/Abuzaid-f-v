@@ -3,6 +3,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { CartProvider } from './contexts/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import Deals from './pages/Deals';
@@ -34,6 +35,7 @@ function App() {
                             </Routes>
                         </main>
                         <Footer />
+                        <WhatsAppButton />
                     </div>
                 </BrowserRouter>
             </CartProvider>
