@@ -33,6 +33,33 @@ export interface Box {
     inStock: boolean;
 }
 
+export interface CustomBoxProduct {
+    product: Product;
+    quantity: number;
+}
+
+export interface CustomBox {
+    id: string;
+    name: {
+        ar: string;
+        en: string;
+    };
+    description: {
+        ar: string;
+        en: string;
+    };
+    contents: {
+        ar: string[];
+        en: string[];
+    };
+    price: number;
+    image: string;
+    inStock: boolean;
+    isCustom: true;
+    selectedProducts: CustomBoxProduct[];
+    createdAt: string;
+}
+
 export interface CartItem {
     product: Product | Box;
     quantity: number;

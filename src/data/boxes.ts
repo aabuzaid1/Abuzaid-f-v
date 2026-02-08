@@ -31,21 +31,7 @@ export const boxes: Box[] = [
         image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=400',
         inStock: true,
     },
-    {
-        id: 'box-3',
-        name: { ar: 'صندوق العصير', en: 'Juice Box' },
-        description: {
-            ar: 'فواكه مثالية للعصائر الطازجة',
-            en: 'Perfect fruits for fresh juices',
-        },
-        contents: {
-            ar: ['3 كيلو برتقال', '2 كيلو جزر', '1 كيلو تفاح أخضر', '1 كيلو شمندر', '2 ربطة نعنع'],
-            en: ['3 kg Oranges', '2 kg Carrots', '1 kg Green Apples', '1 kg Beetroot', '2 bunches Mint'],
-        },
-        price: 11.00,
-        image: 'https://images.unsplash.com/photo-1622597467836-f3e7e50a0c4e?w=400',
-        inStock: true,
-    },
+
     {
         id: 'box-4',
         name: { ar: 'صندوق السلطة', en: 'Salad Box' },

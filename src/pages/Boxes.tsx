@@ -1,17 +1,35 @@
-import React from 'react';
-import { Package, Sparkles, Gift } from 'lucide-react';
+import React, { useState } from 'react';
+import { Package, Sparkles, Gift, Plus, Trash2, Edit3 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useCart } from '../contexts/CartContext';
 import { boxes } from '../data/boxes';
 import BoxCard from '../components/BoxCard';
+import CustomBoxBuilder from '../components/CustomBoxBuilder';
+import { useCustomBoxes } from '../hooks/useCustomBoxes';
+import { CustomBox } from '../types';
 
 const Boxes: React.FC = () => {
     const { t, language } = useLanguage();
+    const { addToCart } = useCart();
+    const { customBoxes, deleteBox } = useCustomBoxes();
+    const [isBuilderOpen, setIsBuilderOpen] = useState(false);
+    const [editingBox, setEditingBox] = useState<CustomBox | undefined>(undefined);
 
     const features = [
         { icon: '🎁', textAr: 'تشكيلة منتقاة', textEn: 'Curated Selection' },
         { icon: '💰', textAr: 'سعر موفّر', textEn: 'Great Value' },
         { icon: '🚚', textAr: 'توصيل مجاني للطلبات الكبيرة', textEn: 'Free Delivery for Large Orders' },
     ];
+
+    const handleEditBox = (box: CustomBox) => {
+        setEditingBox(box);
+        setIsBuilderOpen(true);
+    };
+
+    const handleCloseBuilder = () => {
+        setIsBuilderOpen(false);
+        setEditingBox(undefined);
+    };
 
     return (
         <div className="min-h-screen bg-[#FAFAFA]">
@@ -60,9 +78,18 @@ const Boxes: React.FC = () => {
                         <Package size={48} className="text-yellow-400" />
                         {t('boxesTitle')}
                     </h1>
-                    <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                    <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
                         {t('boxesSubtitle')}
                     </p>
+
+                    {/* Create Custom Box Button */}
+                    <button
+                        onClick={() => setIsBuilderOpen(true)}
+                        className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:bg-yellow-400 hover:text-white transition-all transform hover:scale-105 shadow-lg"
+                    >
+                        <Plus size={24} />
+                        {t('createCustomBox')}
+                    </button>
                 </div>
             </section>
 
@@ -80,9 +107,70 @@ const Boxes: React.FC = () => {
                 </div>
             </section>
 
-            {/* Boxes Grid */}
+            {/* My Custom Boxes */}
+            {customBoxes.length > 0 && (
+                <section className="py-12 bg-gradient-to-b from-primary/5 to-transparent">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+                            <Sparkles className="text-primary" size={28} />
+                            {t('myCustomBoxes')}
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                            {customBoxes.map((box) => (
+                                <div key={box.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                                    <div className="relative aspect-video bg-gray-50">
+                                        <img
+                                            src={box.image}
+                                            alt={box.name[language]}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute top-3 end-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">
+                                            {language === 'ar' ? 'مخصص' : 'Custom'}
+                                        </div>
+                                    </div>
+                                    <div className="p-4">
+                                        <h3 className="font-bold text-gray-800 text-lg mb-2">{box.name[language]}</h3>
+                                        <p className="text-gray-600 text-sm mb-3">
+                                            {box.selectedProducts.length} {language === 'ar' ? 'منتج' : 'products'}
+                                        </p>
+                                        <p className="text-primary font-bold text-xl mb-4">
+                                            {box.price.toFixed(2)} {t('currency')}
+                                        </p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => addToCart(box, true)}
+                                                className="flex-1 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary-700 transition flex items-center justify-center gap-2"
+                                            >
+                                                <Plus size={18} />
+                                                {t('addToCart')}
+                                            </button>
+                                            <button
+                                                onClick={() => handleEditBox(box)}
+                                                className="p-2 bg-gray-100 text-gray-600 rounded-xl hover:bg-gray-200 transition"
+                                            >
+                                                <Edit3 size={18} />
+                                            </button>
+                                            <button
+                                                onClick={() => deleteBox(box.id)}
+                                                className="p-2 bg-red-50 text-red-500 rounded-xl hover:bg-red-100 transition"
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Ready-made Boxes Grid */}
             <section className="py-16 lg:py-24">
                 <div className="container mx-auto px-4">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+                        {language === 'ar' ? 'صناديق جاهزة' : 'Ready-made Boxes'}
+                    </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
                         {boxes.map((box, index) => (
                             <div
@@ -97,17 +185,29 @@ const Boxes: React.FC = () => {
 
                     {/* Info Note */}
                     <div className="mt-16 text-center">
-                        <div className="inline-flex items-center gap-3 bg-primary/5 px-8 py-4 rounded-2xl border border-primary/10">
+                        <button
+                            onClick={() => setIsBuilderOpen(true)}
+                            className="inline-flex items-center gap-3 bg-primary/10 hover:bg-primary/20 px-8 py-4 rounded-2xl border border-primary/20 transition-colors cursor-pointer"
+                        >
                             <Sparkles size={20} className="text-primary" />
                             <span className="font-medium text-gray-700">
-                                {language === 'ar' ? 'يمكنك تخصيص محتويات الصندوق حسب رغبتك' : 'You can customize the box contents as you wish'}
+                                {t('customizeBox')}
                             </span>
-                        </div>
+                            <Plus size={20} className="text-primary" />
+                        </button>
                     </div>
                 </div>
             </section>
+
+            {/* Custom Box Builder Modal */}
+            <CustomBoxBuilder
+                isOpen={isBuilderOpen}
+                onClose={handleCloseBuilder}
+                editingBox={editingBox}
+            />
         </div>
     );
 };
 
 export default Boxes;
+
