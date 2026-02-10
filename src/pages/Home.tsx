@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Truck, Scale, Award, Leaf, Apple, Carrot, Sparkles, Star, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { products } from '../data/products';
+import { useProducts } from '../hooks/useProducts';
 import ProductCard from '../components/ProductCard';
 
 const Home: React.FC = () => {
     const { t, isRTL } = useLanguage();
+    const { products, loading: productsLoading } = useProducts();
 
     const categories = [
         { id: 'fruits', icon: Apple, color: 'from-red-500 via-rose-500 to-pink-600', bgImage: '🍎🍊🍋🍇🍓', path: '/category?cat=fruits' },
@@ -208,11 +209,25 @@ const Home: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                        {products.filter(p => p.inStock).slice(0, 8).map((product, index) => (
-                            <div key={product.id} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                <ProductCard product={product} />
-                            </div>
-                        ))}
+                        {productsLoading ? (
+                            // Loading skeletons
+                            Array.from({ length: 8 }).map((_, index) => (
+                                <div key={index} className="bg-white rounded-3xl shadow-premium overflow-hidden fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="aspect-square shimmer" />
+                                    <div className="p-5 space-y-3">
+                                        <div className="h-5 w-3/4 rounded-lg shimmer" />
+                                        <div className="h-8 w-1/2 rounded-lg shimmer" />
+                                        <div className="h-12 w-full rounded-xl shimmer" />
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            products.filter(p => p.inStock).slice(0, 8).map((product, index) => (
+                                <div key={product.id} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <ProductCard product={product} />
+                                </div>
+                            ))
+                        )}
                     </div>
 
                     {/* Mobile View All */}

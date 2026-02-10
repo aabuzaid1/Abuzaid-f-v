@@ -2,11 +2,12 @@ import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, Apple, Carrot, Sparkles, Filter, Leaf } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { products } from '../data/products';
+import { useProducts } from '../hooks/useProducts';
 import ProductCard from '../components/ProductCard';
 
 const Category: React.FC = () => {
     const { language, t } = useLanguage();
+    const { products, loading: productsLoading } = useProducts();
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -34,7 +35,7 @@ const Category: React.FC = () => {
             }
             return true;
         });
-    }, [activeCategory, searchQuery]);
+    }, [activeCategory, searchQuery, products]);
 
     const handleCategoryChange = (categoryId: string) => {
         if (categoryId === 'all') {
@@ -144,7 +145,20 @@ const Category: React.FC = () => {
                 </div>
 
                 {/* Products Grid */}
-                {filteredProducts.length > 0 ? (
+                {productsLoading ? (
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-8">
+                        {Array.from({ length: 12 }).map((_, index) => (
+                            <div key={index} className="bg-white rounded-3xl shadow-premium overflow-hidden fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
+                                <div className="aspect-square shimmer" />
+                                <div className="p-5 space-y-3">
+                                    <div className="h-5 w-3/4 rounded-lg shimmer" />
+                                    <div className="h-8 w-1/2 rounded-lg shimmer" />
+                                    <div className="h-12 w-full rounded-xl shimmer" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : filteredProducts.length > 0 ? (
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-8">
                         {filteredProducts.map((product, index) => (
                             <div
