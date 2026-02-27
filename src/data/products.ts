@@ -3,15 +3,6 @@ import { Product } from '../types';
 export const products: Product[] = [
     // ============ VEGETABLES ============
     {
-        id: 'veg-1',
-        name: { ar: 'فليفلة صفراء', en: 'Yellow Bell Pepper' },
-        category: 'vegetables',
-        price: 1.15,
-        unit: 'kg',
-        image: 'https://greenbasketstore.com/wp-content/uploads/2022/03/1.png',
-        inStock: true,
-    },
-    {
         id: 'veg-2',
         name: { ar: 'فليفلة حمراء', en: 'Red Bell Pepper' },
         category: 'vegetables',

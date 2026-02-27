@@ -31,7 +31,9 @@ const categoryEmoji: Record<string, string> = {
 };
 
 const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete, searchTerm, filterCategory }) => {
-    const [deleteConfirm, setDeleteConfirm] = React.useState<string | null>(null);
+    // Use ref for delete confirmation so it survives onSnapshot re-renders
+    const deleteConfirmRef = React.useRef<string | null>(null);
+    const [, forceUpdate] = React.useReducer(x => x + 1, 0);
 
     const filteredProducts = products.filter(p => {
         const matchesSearch = searchTerm === '' ||
@@ -42,13 +44,20 @@ const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete,
     });
 
     const handleDeleteClick = (productId: string, productName: string) => {
-        if (deleteConfirm === productId) {
+        if (deleteConfirmRef.current === productId) {
+            deleteConfirmRef.current = null;
+            forceUpdate();
             onDelete(productId, productName);
-            setDeleteConfirm(null);
         } else {
-            setDeleteConfirm(productId);
-            // Auto-reset after 3 seconds
-            setTimeout(() => setDeleteConfirm(null), 3000);
+            deleteConfirmRef.current = productId;
+            forceUpdate();
+            // Auto-reset after 5 seconds
+            setTimeout(() => {
+                if (deleteConfirmRef.current === productId) {
+                    deleteConfirmRef.current = null;
+                    forceUpdate();
+                }
+            }, 5000);
         }
     };
 
@@ -147,13 +156,13 @@ const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete,
                                         </button>
                                         <button
                                             onClick={() => handleDeleteClick(product.id, product.name.en)}
-                                            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${deleteConfirm === product.id
+                                            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${deleteConfirmRef.current === product.id
                                                 ? 'bg-red-500 text-white animate-pulse'
                                                 : 'bg-red-50 hover:bg-red-100 text-red-500'
                                                 }`}
-                                            title={deleteConfirm === product.id ? 'Click again to confirm' : 'Delete'}
+                                            title={deleteConfirmRef.current === product.id ? 'Click again to confirm' : 'Delete'}
                                         >
-                                            {deleteConfirm === product.id ? <AlertTriangle size={16} /> : <Trash2 size={16} />}
+                                            {deleteConfirmRef.current === product.id ? <AlertTriangle size={16} /> : <Trash2 size={16} />}
                                         </button>
                                     </div>
                                 </td>
@@ -197,12 +206,12 @@ const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete,
                                         </button>
                                         <button
                                             onClick={() => handleDeleteClick(product.id, product.name.en)}
-                                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${deleteConfirm === product.id
+                                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${deleteConfirmRef.current === product.id
                                                 ? 'bg-red-500 text-white'
                                                 : 'bg-red-50 text-red-500'
                                                 }`}
                                         >
-                                            {deleteConfirm === product.id ? <AlertTriangle size={14} /> : <Trash2 size={14} />}
+                                            {deleteConfirmRef.current === product.id ? <AlertTriangle size={14} /> : <Trash2 size={14} />}
                                         </button>
                                     </div>
                                 </div>

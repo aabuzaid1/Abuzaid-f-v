@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Save, Image } from 'lucide-react';
 
 interface ProductFormData {
+    id?: string;
     name: { ar: string; en: string };
     price: number;
     category: string;
@@ -46,7 +47,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ isOpen, onClose, onSubmit, in
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onSubmit(formData);
+        // Strip id before submitting — id is managed separately, not as Firestore data
+        const { id, ...dataWithoutId } = formData;
+        onSubmit(dataWithoutId as ProductFormData);
     };
 
     if (!isOpen) return null;

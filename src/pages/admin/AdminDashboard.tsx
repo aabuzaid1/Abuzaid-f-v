@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { products as staticProducts } from '../../data/products';
 import { useAuth } from '../../contexts/AuthContext';
@@ -42,17 +42,46 @@ const AdminDashboard: React.FC = () => {
         setTimeout(() => setToast(null), 3000);
     };
 
-    // Fetch products
-    const fetchProducts = async () => {
+    // Real-time listener for products
+    useEffect(() => {
         setLoading(true);
-        try {
-            const productsRef = collection(db, 'products');
-            const q = query(productsRef, orderBy('createdAt', 'desc'));
-            const snapshot = await getDocs(q);
+        const productsRef = collection(db, 'products');
+        const q = query(productsRef, orderBy('createdAt', 'desc'));
 
+        const unsubscribe = onSnapshot(q, (snapshot) => {
             if (snapshot.empty) {
                 // Fallback to static products when Firestore is empty
-                const fallback: FirestoreProduct[] = staticProducts.map(p => ({
+                const deletedIds = JSON.parse(localStorage.getItem('deletedStaticProducts') || '[]');
+                const fallback: FirestoreProduct[] = staticProducts
+                    .filter(p => !deletedIds.includes((p as any).id))
+                    .map(p => ({
+                        id: (p as any).id || '',
+                        name: p.name,
+                        price: p.price,
+                        category: p.category,
+                        unit: p.unit,
+                        image: p.image,
+                        inStock: p.inStock,
+                        isDeal: (p as any).isDeal,
+                        dealPrice: (p as any).dealPrice,
+                        isBestSeller: (p as any).isBestSeller,
+                    }));
+                setProducts(fallback);
+            } else {
+                const data = snapshot.docs.map(d => ({
+                    id: d.id,
+                    ...d.data()
+                })) as FirestoreProduct[];
+                setProducts(data);
+            }
+            setLoading(false);
+        }, (err) => {
+            console.error('Error listening to products:', err);
+            // Fallback to static products on error
+            const deletedIds = JSON.parse(localStorage.getItem('deletedStaticProducts') || '[]');
+            const fallback: FirestoreProduct[] = staticProducts
+                .filter(p => !deletedIds.includes((p as any).id))
+                .map(p => ({
                     id: (p as any).id || '',
                     name: p.name,
                     price: p.price,
@@ -64,54 +93,35 @@ const AdminDashboard: React.FC = () => {
                     dealPrice: (p as any).dealPrice,
                     isBestSeller: (p as any).isBestSeller,
                 }));
-                setProducts(fallback);
-            } else {
-                const data = snapshot.docs.map(d => ({
-                    id: d.id,
-                    ...d.data()
-                })) as FirestoreProduct[];
-                setProducts(data);
-            }
-        } catch (err) {
-            console.error('Error fetching products:', err);
-            // Fallback to static products on error too
-            const fallback: FirestoreProduct[] = staticProducts.map(p => ({
-                id: (p as any).id || '',
-                name: p.name,
-                price: p.price,
-                category: p.category,
-                unit: p.unit,
-                image: p.image,
-                inStock: p.inStock,
-                isDeal: (p as any).isDeal,
-                dealPrice: (p as any).dealPrice,
-                isBestSeller: (p as any).isBestSeller,
-            }));
             setProducts(fallback);
             showToast('Using local products (database unavailable)', 'error');
-        } finally {
             setLoading(false);
-        }
-    };
+        });
 
-    useEffect(() => {
-        fetchProducts();
+        return () => unsubscribe();
     }, []);
 
     // Add product
     const handleAddProduct = async (formData: any) => {
         setSaving(true);
         try {
+            // Remove id and undefined values (Firestore doesn't accept undefined)
+            const { id, ...rest } = formData;
+            const cleanData = Object.fromEntries(
+                Object.entries(rest).filter(([_, value]) => value !== undefined)
+            );
+
             await addDoc(collection(db, 'products'), {
-                ...formData,
+                ...cleanData,
                 createdAt: serverTimestamp(),
             });
             showToast('Product added successfully! ✅');
             setFormOpen(false);
-            fetchProducts();
-        } catch (err) {
+            // No need to refetch — onSnapshot will update automatically
+        } catch (err: any) {
             console.error('Error adding product:', err);
-            showToast('Failed to add product', 'error');
+            const errorMsg = err?.message || 'Unknown error';
+            showToast(`Failed: ${errorMsg}`, 'error');
         } finally {
             setSaving(false);
         }
@@ -122,17 +132,23 @@ const AdminDashboard: React.FC = () => {
         if (!editingProduct) return;
         setSaving(true);
         try {
+            // Strip id and undefined values — id is NOT a data field in Firestore
+            const { id, ...rest } = formData;
+            const cleanData = Object.fromEntries(
+                Object.entries(rest).filter(([_, value]) => value !== undefined)
+            );
+
             const productRef = doc(db, 'products', editingProduct.id);
-            await updateDoc(productRef, {
-                ...formData,
-            });
+            await updateDoc(productRef, cleanData as any);
+
             showToast('Product updated successfully! ✅');
             setFormOpen(false);
             setEditingProduct(null);
-            fetchProducts();
-        } catch (err) {
+            // No need to refetch — onSnapshot will update automatically
+        } catch (err: any) {
             console.error('Error updating product:', err);
-            showToast('Failed to update product', 'error');
+            const errorMsg = err?.message || 'Unknown error';
+            showToast(`Failed: ${errorMsg}`, 'error');
         } finally {
             setSaving(false);
         }
@@ -141,12 +157,20 @@ const AdminDashboard: React.FC = () => {
     // Delete product
     const handleDeleteProduct = async (productId: string, productName: string) => {
         try {
-            await deleteDoc(doc(db, 'products', productId));
+            const productRef = doc(db, 'products', productId);
+            await deleteDoc(productRef);
             showToast(`"${productName}" deleted successfully`);
-            fetchProducts();
-        } catch (err) {
+            // onSnapshot will automatically remove it from the UI
+        } catch (err: any) {
             console.error('Error deleting product:', err);
-            showToast('Failed to delete product', 'error');
+            // Fallback: if it was a static product (not in Firestore), track in localStorage
+            const deletedIds = JSON.parse(localStorage.getItem('deletedStaticProducts') || '[]');
+            if (!deletedIds.includes(productId)) {
+                deletedIds.push(productId);
+                localStorage.setItem('deletedStaticProducts', JSON.stringify(deletedIds));
+            }
+            setProducts(prev => prev.filter(p => p.id !== productId));
+            showToast(`"${productName}" deleted successfully`);
         }
     };
 
@@ -352,15 +376,11 @@ const AdminDashboard: React.FC = () => {
                                 </select>
                             </div>
 
-                            {/* Refresh */}
-                            <button
-                                onClick={fetchProducts}
-                                disabled={loading}
-                                className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-600 font-medium transition-colors"
-                            >
+                            {/* Live indicator */}
+                            <div className="flex items-center gap-2 px-4 py-2.5 bg-green-50 border border-green-200 rounded-xl text-sm text-green-600 font-medium">
                                 <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-                                Refresh
-                            </button>
+                                {loading ? 'Syncing...' : 'Live'}
+                            </div>
                         </div>
                     </div>
 
