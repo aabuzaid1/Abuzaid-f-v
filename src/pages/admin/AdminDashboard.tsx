@@ -221,7 +221,7 @@ const AdminDashboard: React.FC = () => {
                 count++;
             }
             showToast(`${count} products seeded successfully! 🎉`);
-            fetchProducts();
+            // onSnapshot will automatically sync the new products
         } catch (err) {
             console.error('Error seeding products:', err);
             showToast('Failed to seed products', 'error');
